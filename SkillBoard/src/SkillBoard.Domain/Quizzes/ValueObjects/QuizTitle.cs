@@ -1,7 +1,7 @@
 using CSharpFunctionalExtensions;
 using Shared;
 
-namespace SkillBoard.Domain.Quiz.ValueObjects;
+namespace SkillBoard.Domain.Quizzes.ValueObjects;
 
 public sealed class QuizTitle
 {

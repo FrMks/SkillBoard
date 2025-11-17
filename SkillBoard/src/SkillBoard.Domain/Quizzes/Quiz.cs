@@ -1,9 +1,7 @@
 using CSharpFunctionalExtensions;
-using Shared;
-using SkillBoard.Domain.Quiz.ValueObjects;
-using SkillBoard.Domain.QuizAgregator.ValueObjects;
+using SkillBoard.Domain.Quizzes.ValueObjects;
 
-namespace SkillBoard.Domain.QuizAgregator;
+namespace SkillBoard.Domain.Quizzes;
 
 public sealed class Quiz
 {
