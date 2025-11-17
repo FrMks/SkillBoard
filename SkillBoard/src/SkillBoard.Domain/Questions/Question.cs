@@ -43,6 +43,11 @@ public sealed class Question
         
         return Result.Success<Question, Error>(question);
     }
+
+    // EF Core
+    private Question()
+    {
+    }
     
     private Question(QuestionId id, QuizId quizId, QuestionType type, string[]? multipleAnswers, string? singleAnswer, QuestionPoints points, QuestionOrderIndex orderIndex, QuestionText questionText)
     {

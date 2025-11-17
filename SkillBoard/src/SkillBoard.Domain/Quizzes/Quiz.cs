@@ -37,6 +37,10 @@ public sealed class Quiz
     }
 
     // EF Core
+    private Quiz()
+    {
+    }
+
     private Quiz(QuizId id, QuizTitle title, DateTime deadline, QuizCreatedBy createdBy, QuizIsPublished isPublished)
     {
         Id = id;
