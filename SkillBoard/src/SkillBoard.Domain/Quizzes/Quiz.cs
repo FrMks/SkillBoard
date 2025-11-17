@@ -1,11 +1,14 @@
 using CSharpFunctionalExtensions;
+using SkillBoard.Domain.Questions;
 using SkillBoard.Domain.Quizzes.ValueObjects;
 
 namespace SkillBoard.Domain.Quizzes;
 
 public sealed class Quiz
 {
-    public QuizId QuizId { get; }
+    private readonly List<Question> _qustions = new();
+    
+    public QuizId Id { get; }
     
     public QuizTitle Title { get; }
     
@@ -22,6 +25,8 @@ public sealed class Quiz
     /// Опубликован ли текст (черновик или активен)
     /// </summary>
     public QuizIsPublished IsPublished { get; }
+    
+    public IReadOnlyCollection<Question> Questions => _qustions.AsReadOnly();
 
     public static Result<Quiz> Create(QuizId quizId, QuizTitle title, DateTime deadline, QuizCreatedBy createdBy,
         QuizIsPublished isPublished)
@@ -32,9 +37,9 @@ public sealed class Quiz
     }
 
     // EF Core
-    private Quiz(QuizId quizId, QuizTitle title, DateTime deadline, QuizCreatedBy createdBy, QuizIsPublished isPublished)
+    private Quiz(QuizId id, QuizTitle title, DateTime deadline, QuizCreatedBy createdBy, QuizIsPublished isPublished)
     {
-        QuizId = quizId;
+        Id = id;
         Title = title;
         Deadline = deadline;
         CreatedBy = createdBy;
