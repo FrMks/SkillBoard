@@ -1,13 +1,14 @@
 using CSharpFunctionalExtensions;
 using Shared;
+using SkillBoard.Domain.Quizzes.ValueObjects;
 
-namespace SkillBoard.Domain.Quizzes.ValueObjects;
+namespace SkillBoard.Domain.Users.ValueObjects;
 
-public sealed record QuizTitle
+public sealed record UserName
 {
     public string Value { get; }
 
-    public Result<QuizTitle, Error> Create(string input)
+    public Result<UserName, Error> Create(string input)
     {
         if (string.IsNullOrWhiteSpace(input))
             return Error.Validation(null, "Quiz title cannot be empty.");
@@ -17,12 +18,12 @@ public sealed record QuizTitle
         if (trimmed.Length is > LengthConstants.LENGTH60)
             return Error.Validation("lenght.is.invalid", "Location name cannot be less than 3 symbols and more than 120 characters");
 
-        QuizTitle quizTitle = new(trimmed);
+        UserName userName = new(trimmed);
 
-        return Result.Success<QuizTitle, Error>(quizTitle);
+        return Result.Success<UserName, Error>(userName);
     }
 
-    private QuizTitle(string value)
+    private UserName(string value)
     {
         Value = value;
     }

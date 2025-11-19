@@ -3,7 +3,7 @@ using Shared;
 
 namespace SkillBoard.Domain.Questions.ValueObjects;
 
-public sealed class QuestionText
+public sealed record QuestionText
 {
     public string Value { get; }
 

@@ -3,7 +3,7 @@ using Shared;
 
 namespace SkillBoard.Domain.Quizzes.ValueObjects;
 
-public sealed class QuizIsPublished
+public sealed record QuizIsPublished
 {
     public bool Value { get; }
 

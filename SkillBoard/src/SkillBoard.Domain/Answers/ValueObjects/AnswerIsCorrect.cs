@@ -3,7 +3,7 @@ using Shared;
 
 namespace SkillBoard.Domain.Answers.ValueObjects;
 
-public class AnswerIsCorrect
+public record AnswerIsCorrect
 {
     public bool Value { get; }
 

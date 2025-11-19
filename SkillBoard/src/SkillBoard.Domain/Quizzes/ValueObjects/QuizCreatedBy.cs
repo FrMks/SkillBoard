@@ -1,6 +1,6 @@
 namespace SkillBoard.Domain.Quizzes.ValueObjects;
 
-public sealed class QuizCreatedBy
+public sealed record QuizCreatedBy
 {
     public Guid Value { get; }
     

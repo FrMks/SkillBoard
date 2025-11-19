@@ -27,7 +27,13 @@ public sealed class Answer
     
     public DateTime SubmittedAt { get; }
 
-    public static Result<Answer, Error> Create(AnswerId id, UserId userId, QuestionId questionId, string[]? multipleAnswers, string? singleAnswer, AnswerIsCorrect isCorrect, AnswerPointsEarned pointsEarned)
+    public static Result<Answer, Error> Create(AnswerId id,
+        UserId userId,
+        QuestionId questionId,
+        string[]? multipleAnswers,
+        string? singleAnswer,
+        AnswerIsCorrect isCorrect,
+        AnswerPointsEarned pointsEarned)
     {
         if (multipleAnswers?.Length == 0 && string.IsNullOrWhiteSpace(singleAnswer))
             return Error.Validation(null, "Multiple answers should not be empty or single answer should not be empty.");
@@ -41,7 +47,13 @@ public sealed class Answer
     {
     }
 
-    private Answer(AnswerId id, UserId userId, QuestionId questionId, string[]? multipleAnswers, string? singleAnswer, AnswerIsCorrect isCorrect, AnswerPointsEarned pointsEarned)
+    private Answer(AnswerId id,
+        UserId userId,
+        QuestionId questionId,
+        string[]? multipleAnswers,
+        string? singleAnswer,
+        AnswerIsCorrect isCorrect,
+        AnswerPointsEarned pointsEarned)
     {
         Id = id;
         UserId = userId;

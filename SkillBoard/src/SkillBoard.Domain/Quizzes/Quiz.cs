@@ -1,4 +1,5 @@
 using CSharpFunctionalExtensions;
+using Shared;
 using SkillBoard.Domain.Questions;
 using SkillBoard.Domain.Quizzes.ValueObjects;
 
@@ -28,12 +29,12 @@ public sealed class Quiz
     
     public IReadOnlyCollection<Question> Questions => _qustions.AsReadOnly();
 
-    public static Result<Quiz> Create(QuizId quizId, QuizTitle title, DateTime deadline, QuizCreatedBy createdBy,
+    public static Result<Quiz, Error> Create(QuizId quizId, QuizTitle title, DateTime deadline, QuizCreatedBy createdBy,
         QuizIsPublished isPublished)
     {
         Quiz quiz = new(quizId, title, deadline, createdBy, isPublished);
 
-        return Result.Success(quiz);
+        return Result.Success<Quiz, Error>(quiz);
     }
 
     // EF Core
