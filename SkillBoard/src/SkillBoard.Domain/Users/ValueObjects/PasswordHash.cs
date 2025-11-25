@@ -7,7 +7,7 @@ public record PasswordHash
 {
     public string Value { get; }
 
-    public Result<PasswordHash, Error> Create(string input)
+    public static Result<PasswordHash, Error> Create(string input)
     {
         if (string.IsNullOrWhiteSpace(input))
             return Error.Validation(null, "Password hash cannot be null or empty.");

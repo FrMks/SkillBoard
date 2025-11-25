@@ -7,7 +7,7 @@ public sealed record QuestionOrderIndex
 {
     public int Value { get; }
 
-    public Result<QuestionOrderIndex, Error> Create(int input)
+    public static Result<QuestionOrderIndex, Error> Create(int input)
     {
         if (input <= 1)
             return Error.Validation(null, "Question order index must be greater than 1");

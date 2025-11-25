@@ -7,7 +7,7 @@ public sealed record QuestionText
 {
     public string Value { get; }
 
-    public Result<QuestionText, Error> Create(string input)
+    public static Result<QuestionText, Error> Create(string input)
     {
         if (string.IsNullOrWhiteSpace(input))
             return Error.Validation(null, "Question text cannot be empty");

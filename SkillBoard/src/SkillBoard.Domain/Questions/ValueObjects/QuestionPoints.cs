@@ -7,7 +7,7 @@ public sealed record QuestionPoints
 {
     public int Value { get; }
 
-    public Result<QuestionPoints, Error> Create(int input)
+    public static Result<QuestionPoints, Error> Create(int input)
     {
         if (input <= 0 || input > 10)
             return Error.Validation(null, "Question points cannot be zero or negative and more than 10.");

@@ -17,6 +17,10 @@ public sealed record PercentageScore
         var percentage = (decimal)totalPoints / maxPoints * 100;
         return new PercentageScore(Math.Round(percentage, 2));
     }
+    public static PercentageScore FromValue(decimal value)
+    {
+        return new PercentageScore(value);
+    }
     
     private PercentageScore(decimal value)
     {

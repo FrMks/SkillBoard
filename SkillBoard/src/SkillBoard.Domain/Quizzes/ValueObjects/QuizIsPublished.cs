@@ -7,7 +7,7 @@ public sealed record QuizIsPublished
 {
     public bool Value { get; }
 
-    public Result<QuizIsPublished, Error> Create(bool input)
+    public static Result<QuizIsPublished, Error> Create(bool input)
     {
         QuizIsPublished quizIsPublished = new(input);
         return Result.Success<QuizIsPublished, Error>(quizIsPublished);
