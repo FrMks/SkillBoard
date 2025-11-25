@@ -47,14 +47,13 @@ public class QuestionConfiguration : IEntityTypeConfiguration<Question>
             .HasConversion(qt => qt.Value, value => QuestionText.Create(value).Value)
             .HasColumnName("question_text");
 
-        builder
-            .HasMany<Answer>("_answers")
+        builder.HasMany(q => q.Answers)
             .WithOne()
             .HasForeignKey("QuestionId")
             .OnDelete(DeleteBehavior.Cascade);
 
-        builder
-            .Navigation(q => q.Answers)
-            .UsePropertyAccessMode(PropertyAccessMode.Field);
+        builder.Metadata
+            .FindNavigation(nameof(Question.Answers))!
+            .SetPropertyAccessMode(PropertyAccessMode.Field);
     }
 }

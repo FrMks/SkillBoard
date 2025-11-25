@@ -7,7 +7,7 @@ namespace SkillBoard.Domain.Quizzes;
 
 public sealed class Quiz
 {
-    private readonly List<Question> _qustions = new();
+    private readonly List<Question> _questions = new();
     
     public QuizId Id { get; }
     
@@ -32,7 +32,7 @@ public sealed class Quiz
     /// </summary>
     public QuizIsPublished IsPublished { get; }
     
-    public IReadOnlyCollection<Question> Questions => _qustions.AsReadOnly();
+    public IReadOnlyCollection<Question> Questions => _questions.AsReadOnly();
 
     public static Result<Quiz, Error> Create(
         QuizId id,
@@ -70,6 +70,6 @@ public sealed class Quiz
         IsPublished = isPublished;
         CreatorUserId = creatorUserId;
         CreatedAt = DateTime.UtcNow;
-        _qustions.AddRange(questions);
+        _questions.AddRange(questions);
     }
 }

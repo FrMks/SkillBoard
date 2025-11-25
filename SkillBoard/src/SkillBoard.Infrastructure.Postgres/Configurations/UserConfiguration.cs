@@ -35,14 +35,13 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.Property(u => u.CreatedAt)
             .HasColumnName("created_at");
 
-        builder
-            .HasMany<Quiz>("_quizzes")
+        builder.HasMany(u => u.Quizzes)
             .WithOne()
             .HasForeignKey("UserId")
             .OnDelete(DeleteBehavior.Cascade);
 
-        builder
-            .Navigation(u => u.Quizzes)
-            .UsePropertyAccessMode(PropertyAccessMode.Field);
+        builder.Metadata
+            .FindNavigation(nameof(User.Quizzes))!
+            .SetPropertyAccessMode(PropertyAccessMode.Field);
     }
 }

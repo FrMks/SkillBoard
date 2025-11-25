@@ -41,14 +41,13 @@ public class QuizConfiguration : IEntityTypeConfiguration<Quiz>
             .HasConversion(ip => ip.Value, value => QuizIsPublished.Create(value).Value)
             .HasColumnName("is_published");
 
-        builder
-            .HasMany<Question>("_qustions")
+        builder.HasMany(q => q.Questions)
             .WithOne()
             .HasForeignKey("QuizId")
             .OnDelete(DeleteBehavior.Cascade);
 
-        builder
-            .Navigation(q => q.Questions)
-            .UsePropertyAccessMode(PropertyAccessMode.Field);
+        builder.Metadata
+            .FindNavigation(nameof(Quiz.Questions))!
+            .SetPropertyAccessMode(PropertyAccessMode.Field);
     }
 }
