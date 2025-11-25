@@ -34,26 +34,39 @@ public sealed class Quiz
     
     public IReadOnlyCollection<Question> Questions => _qustions.AsReadOnly();
 
-    public static Result<Quiz, Error> Create(QuizId quizId, QuizTitle title, DateTime deadline, QuizCreatedBy createdBy,
-        QuizIsPublished isPublished)
+    public static Result<Quiz, Error> Create(
+        QuizId id,
+        QuizTitle title,
+        DateTime deadline,
+        QuizCreatedBy createdBy,
+        QuizIsPublished isPublished,
+        CreatorUserId creatorUserId)
     {
-        Quiz quiz = new(quizId, title, deadline, createdBy, isPublished);
+        Quiz quiz = new(id, title, deadline, createdBy, isPublished, creatorUserId);
 
         return Result.Success<Quiz, Error>(quiz);
     }
 
     // EF Core
-    private Quiz()
+    private Quiz(CreatorUserId creatorUserId)
     {
+        CreatorUserId = creatorUserId;
     }
 
-    private Quiz(QuizId id, QuizTitle title, DateTime deadline, QuizCreatedBy createdBy, QuizIsPublished isPublished)
+    private Quiz(
+        QuizId id,
+        QuizTitle title,
+        DateTime deadline,
+        QuizCreatedBy createdBy,
+        QuizIsPublished isPublished,
+        CreatorUserId creatorUserId)
     {
         Id = id;
         Title = title;
         Deadline = deadline;
         CreatedBy = createdBy;
         IsPublished = isPublished;
+        CreatorUserId = creatorUserId;
         CreatedAt = DateTime.UtcNow;
     }
 }
