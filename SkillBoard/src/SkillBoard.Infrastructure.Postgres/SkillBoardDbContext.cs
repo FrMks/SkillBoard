@@ -1,4 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SkillBoard.Domain.Answers;
+using SkillBoard.Domain.Questions;
+using SkillBoard.Domain.QuizResults;
+using SkillBoard.Domain.Quizzes;
+using SkillBoard.Domain.Users;
 
 namespace SkillBoard.Infrastructure.Postgres;
 
@@ -21,9 +26,9 @@ public class SkillBoardDbContext : DbContext
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(SkillBoardDbContext).Assembly);
     }
 
-    // public DbSet<Location> Locations => Set<Location>();
-    // public DbSet<DepartmentLocation> DepartmentLocations => Set<DepartmentLocation>();
-    // public DbSet<Department> Departments => Set<Department>();
-    // public DbSet<Position> Positions => Set<Position>();
-    // public DbSet<DepartmentPosition> DepartmentPositions => Set<DepartmentPosition>();
+    public DbSet<Quiz> Quizes => Set<Quiz>();
+    public DbSet<Question> Questions => Set<Question>();
+    public DbSet<Answer> Answers => Set<Answer>();
+    public DbSet<User> Users => Set<User>();
+    public DbSet<QuizResult> QuizResults => Set<QuizResult>();
 }

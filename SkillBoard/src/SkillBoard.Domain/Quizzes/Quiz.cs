@@ -23,6 +23,11 @@ public sealed class Quiz
     public DateTime CreatedAt { get; }
     
     /// <summary>
+    /// Идентификатор пользователя, который создал тест. Предполагается, что это тимлид.
+    /// </summary>
+    public CreatorUserId CreatorUserId { get; }
+    
+    /// <summary>
     /// Опубликован ли текст (черновик или активен)
     /// </summary>
     public QuizIsPublished IsPublished { get; }
