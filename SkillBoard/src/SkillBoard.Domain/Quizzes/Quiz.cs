@@ -40,9 +40,10 @@ public sealed class Quiz
         DateTime deadline,
         QuizCreatedBy createdBy,
         QuizIsPublished isPublished,
-        CreatorUserId creatorUserId)
+        CreatorUserId creatorUserId,
+        IEnumerable<Question> questions)
     {
-        Quiz quiz = new(id, title, deadline, createdBy, isPublished, creatorUserId);
+        Quiz quiz = new(id, title, deadline, createdBy, isPublished, creatorUserId, questions);
 
         return Result.Success<Quiz, Error>(quiz);
     }
@@ -59,7 +60,8 @@ public sealed class Quiz
         DateTime deadline,
         QuizCreatedBy createdBy,
         QuizIsPublished isPublished,
-        CreatorUserId creatorUserId)
+        CreatorUserId creatorUserId,
+        IEnumerable<Question> questions)
     {
         Id = id;
         Title = title;
@@ -68,5 +70,6 @@ public sealed class Quiz
         IsPublished = isPublished;
         CreatorUserId = creatorUserId;
         CreatedAt = DateTime.UtcNow;
+        _qustions.AddRange(questions);
     }
 }
