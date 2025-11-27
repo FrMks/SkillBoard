@@ -7,7 +7,7 @@ public sealed record QuizTitle
 {
     public string Value { get; }
 
-    public Result<QuizTitle, Error> Create(string input)
+    public static Result<QuizTitle, Error> Create(string input)
     {
         if (string.IsNullOrWhiteSpace(input))
             return Error.Validation(null, "Quiz title cannot be empty.");

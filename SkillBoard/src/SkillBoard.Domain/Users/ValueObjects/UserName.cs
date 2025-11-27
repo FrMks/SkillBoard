@@ -8,7 +8,7 @@ public sealed record UserName
 {
     public string Value { get; }
 
-    public Result<UserName, Error> Create(string input)
+    public static Result<UserName, Error> Create(string input)
     {
         if (string.IsNullOrWhiteSpace(input))
             return Error.Validation(null, "Quiz title cannot be empty.");

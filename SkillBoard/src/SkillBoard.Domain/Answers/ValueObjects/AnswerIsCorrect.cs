@@ -7,7 +7,7 @@ public record AnswerIsCorrect
 {
     public bool Value { get; }
 
-    public Result<AnswerIsCorrect, Error> Create(bool input)
+    public static Result<AnswerIsCorrect, Error> Create(bool input)
     {
         AnswerIsCorrect answerIsCorrect = new(input);
         return Result.Success<AnswerIsCorrect, Error>(answerIsCorrect);

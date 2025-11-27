@@ -7,7 +7,7 @@ namespace SkillBoard.Domain.Quizzes;
 
 public sealed class Quiz
 {
-    private readonly List<Question> _qustions = new();
+    private readonly List<Question> _questions = new();
     
     public QuizId Id { get; }
     
@@ -23,32 +23,53 @@ public sealed class Quiz
     public DateTime CreatedAt { get; }
     
     /// <summary>
+    /// Идентификатор пользователя, который создал тест. Предполагается, что это тимлид.
+    /// </summary>
+    public CreatorUserId CreatorUserId { get; }
+    
+    /// <summary>
     /// Опубликован ли текст (черновик или активен)
     /// </summary>
     public QuizIsPublished IsPublished { get; }
     
-    public IReadOnlyCollection<Question> Questions => _qustions.AsReadOnly();
+    public IReadOnlyCollection<Question> Questions => _questions.AsReadOnly();
 
-    public static Result<Quiz, Error> Create(QuizId quizId, QuizTitle title, DateTime deadline, QuizCreatedBy createdBy,
-        QuizIsPublished isPublished)
+    public static Result<Quiz, Error> Create(
+        QuizId id,
+        QuizTitle title,
+        DateTime deadline,
+        QuizCreatedBy createdBy,
+        QuizIsPublished isPublished,
+        CreatorUserId creatorUserId,
+        IEnumerable<Question> questions)
     {
-        Quiz quiz = new(quizId, title, deadline, createdBy, isPublished);
+        Quiz quiz = new(id, title, deadline, createdBy, isPublished, creatorUserId, questions);
 
         return Result.Success<Quiz, Error>(quiz);
     }
 
     // EF Core
-    private Quiz()
+    private Quiz(CreatorUserId creatorUserId)
     {
+        CreatorUserId = creatorUserId;
     }
 
-    private Quiz(QuizId id, QuizTitle title, DateTime deadline, QuizCreatedBy createdBy, QuizIsPublished isPublished)
+    private Quiz(
+        QuizId id,
+        QuizTitle title,
+        DateTime deadline,
+        QuizCreatedBy createdBy,
+        QuizIsPublished isPublished,
+        CreatorUserId creatorUserId,
+        IEnumerable<Question> questions)
     {
         Id = id;
         Title = title;
         Deadline = deadline;
         CreatedBy = createdBy;
         IsPublished = isPublished;
+        CreatorUserId = creatorUserId;
         CreatedAt = DateTime.UtcNow;
+        _questions.AddRange(questions);
     }
 }

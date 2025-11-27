@@ -24,11 +24,6 @@ public sealed class QuizResult
     
     public PercentageScore PercentageScore { get; }
     
-    /// <summary>
-    /// Процент правильный ответов (TotalPoints / MaxPoints * 100)
-    /// </summary>
-    public double PercentageScope { get; }
-    
     public static Result<QuizResult, Error> Create(QuizResultId id,
         QuizId quizId,
         UserId userId,
