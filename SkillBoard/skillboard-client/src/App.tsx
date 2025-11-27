@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import RoleSelectionPage from './pages/RoleSelectionPage'
-import TeamLeadPage from './pages/TeamMemberPage'
+import TeamLeadPage from './pages/TeamLeaderPage'
 import TeamMemberPage from './pages/TeamMemberPage'
 import logo from './logo.svg';
 import './App.css';

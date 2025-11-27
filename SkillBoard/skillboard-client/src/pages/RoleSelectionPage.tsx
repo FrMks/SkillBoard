@@ -14,17 +14,43 @@ function RoleSelectionPage()
     }
     
     return (
-      <div>
-          <h1>Выберите роль</h1>
-          <div>
-              <button onClick={handleTeamLeadClick}>
-                  Руководитель команды
-              </button>
-              <button onClick={handleTeamMemberClick}>
-                  Руководитель команды
-              </button>
-          </div>
-      </div>  
+      <div style={{
+          backgroundColor: '#EFECE3',
+          height: '100vh',
+          overflow: 'hidden',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '80px',
+          padding: '20px',
+          boxSizing: 'border-box'
+      }}>
+          <button 
+              onClick={handleTeamLeadClick}
+              style={{
+                  backgroundColor: '#8FABD4',
+                  width: '800px',
+                  height: '120px',
+                  border: '4px solid #4A70A9',
+                  borderRadius: '8px',
+                  fontSize: '64px',
+              }}>
+              Руководитель команды
+          </button>
+          <button
+              onClick={handleTeamMemberClick}
+              style={{ 
+                  backgroundColor: '#8FABD4',
+                  width: '800px',
+                  height: '120px',
+                  border: '4px solid #4A70A9',
+                  borderRadius: '8px',
+                  fontSize: '64px',
+              }}>
+              Участник команды
+          </button>
+      </div>
     );
 }
 
