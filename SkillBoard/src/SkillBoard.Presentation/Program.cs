@@ -23,6 +23,9 @@ builder.Services.AddScoped<SkillBoardDbContext>(_ =>
 
 var app = builder.Build();
 
+// React
+app.UseCors("SkillBoardReact");
+
 app.UseExceptionHandlingMiddleware();
 
 app.UseHttpLogging();
