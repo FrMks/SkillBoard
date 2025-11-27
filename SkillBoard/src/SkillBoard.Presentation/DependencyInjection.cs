@@ -10,7 +10,18 @@ public static class DependencyInjection
     {
         return services
             .AddWebDependencies()
-            .AddSerilog();
+            .AddSerilog()
+            // React чтобы сделать один запрос с одного домена на другой домен
+            .AddCors(options =>
+            {
+                options.AddPolicy("SkillBoardReact", policy =>
+                {
+                    policy.WithOrigins("http://localhost:3000")
+                        .AllowAnyHeader() // Разрешаем любые заголовки в запросах
+                        .AllowAnyMethod() // Разрешаем любые HTTP методы
+                        .AllowCredentials(); // Разрешаем отправку cookies и authentication credentials
+                });
+            });
     }
 
     private static IServiceCollection AddWebDependencies(this IServiceCollection services)
